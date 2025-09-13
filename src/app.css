@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		color-scheme: dark;
+	}
+
+	* {
+		@apply selection:bg-brand selection:text-black;
+	}
+
+	body {
+		@apply bg-[#1F1F29] text-white;
+	}
+}
+
+@layer components {
+	.container-px {
+		@apply px-4 sm:px-6 lg:px-10;
+	}
+
+	.section-title {
+		@apply mb-3 text-lg font-semibold text-white/90 sm:text-xl;
+	}
+
+	.badge {
+		@apply inline-flex items-center rounded-full bg-white/10 px-2.5 py-1 text-xs font-medium text-white/80;
+	}
+
+	.btn-primary {
+		@apply inline-flex items-center justify-center rounded-lg bg-brand px-5 py-3 font-semibold text-black transition-colors hover:bg-brand-dark;
+	}
+
+	.card {
+		@apply rounded-2xl bg-card shadow-soft ring-1 ring-white/5;
+	}
+}
+
+/***** utilities for horizontal scrollers *****/
+.horizontal-scroll {
+	display: flex;
+	gap: 15px;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	padding-bottom: 6px;
+}
+
+.horizontal-scroll>* {
+	scroll-snap-align: start;
+}
+
+/* Global beautiful scrollbar styles */
+@layer base {
+
+	*::-webkit-scrollbar {
+		height: 5px;
+	}
+
+	*::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+
+	*::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		background-color: #FFFF00;
+	}
+
+	/* Hide scrollbar on mobile devices */
+	@media (max-width: 768px) {
+		*::-webkit-scrollbar {
+			display: none;
+		}
+
+		.horizontal-scroll {
+			-ms-overflow-style: none;
+			/* IE and Edge */
+			scrollbar-width: none;
+			/* Firefox */
+		}
+	}
+
+}
